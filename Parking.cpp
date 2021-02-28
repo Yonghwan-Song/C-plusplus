@@ -1,12 +1,3 @@
-/**********************************************************
- * Name: Yonghwan Song
- * Student ID: 135458198
- * Seneca email: ysong115@myseneca.ca
- * Section: NDD
- * Completion Date: 8.8
- ->I have done all the coding by myself and only copied the code that my
- professor provided to complete my workshops and assignments.
- **********************************************************/
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <fstream>
@@ -69,7 +60,7 @@ namespace sdds
 						else {
 							delete tmp_vehicle;
 							tmp_vehicle = nullptr;
-							state = true; //didn't work well when I assigned false.. I couldn't fix it so I changed it.
+							state = true; 
 						}
 					}
 					else {

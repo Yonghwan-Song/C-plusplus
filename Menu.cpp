@@ -1,15 +1,3 @@
-/**********************************************************
- * Name: Yonghwan Song
- * Student ID: 135458198
- * Seneca email: ysong115@myseneca.ca
- * Section: NDD
- * Completion Date: 8.8
- //Basically, I had already my code before watching the video, but my code had a abort??(I don't remember what the name of it was) error with caution window coming up on the screen.
- //Hence, I got some help from the video. And after changing some of header file I mentioned in the Menu.h, the problem was resolved.
- //I do not normally prefer detailed instruction but rather think by myself though my codes can look uglier. 
- //But, in this file, I kind of followed detailed instruction of the video, so it might look prettier than other codes in the other file.
- //So, I want you to consider this situation. Thank you!.
- **********************************************************/
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <cstring>
@@ -41,38 +29,33 @@ namespace sdds
 		delete[] m_item_Name;
 		m_item_Name = nullptr;
 	}
-	//Before watching the video, I did not use the initialization list. But I changed my code so that it looks a bit prettier.
-	//My excuse is that I knew the concept before. However, 'm_Arr_items{ nullptr }' is what I didn't know how to use.
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	Menu::Menu() :m_Menu_title(nullptr), m_Arr_items{ nullptr }, m_NumOf_items(0), m_indent(0) {											//
-																																			//
-	}																																		//
-																																			//
-	Menu::Menu(const char* _title, int _indent) : m_Menu_title(nullptr), m_Arr_items{ nullptr }, m_NumOf_items(0), m_indent(_indent) {		//
-		*this = _title;																														//
-	}																																		//
-  	//I added this copy constructor after watching the video.																				//
-	Menu::Menu(const Menu& _menu) : m_Menu_title(nullptr), m_Arr_items{ nullptr }, m_NumOf_items(0), m_indent(_menu.m_indent) {				//
-		*this = _menu;																														//
-	}																																		//
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	///////////////////////////////////////////////////////////////////<--------------In this part, my previous code that I got hint was much look complicated 
-	Menu& Menu::operator=(const Menu& _menu) {						 //				  and I guess there was a 1 block of memory leak out of the previous version of this part.
-		if (this != &_menu) {										 //				  In a nutshell, add~~~ part in the for loop and *this= ~~~; are what I couldn't think up.
-			clear();										         //				  And, clear() before if was also not my idea. my previous one was separating deallocation of m_Arr_items and m_Menu_title.
-			if (!_menu.isEmpty()) {                                  //				  
-				*this = _menu.m_Menu_title;                          //
-				for (int i = 0; i < _menu.m_NumOf_items; i++) {      //
-					add(_menu.m_Arr_items[i]->m_item_Name);          //
-				}                                                    //
-				m_indent = _menu.m_indent;                           //
-			}                                                        //
-		}														     //
-		return *this;											     //			
-	}																 //
-	///////////////////////////////////////////////////////////////////															
 	
+	Menu::Menu() :m_Menu_title(nullptr), m_Arr_items{ nullptr }, m_NumOf_items(0), m_indent(0) {											
+																																			
+	}																																		
+																																			
+	Menu::Menu(const char* _title, int _indent) : m_Menu_title(nullptr), m_Arr_items{ nullptr }, m_NumOf_items(0), m_indent(_indent) {		
+		*this = _title;																														
+	}																																		
+  	//I added this copy constructor after watching the video.																				
+	Menu::Menu(const Menu& _menu) : m_Menu_title(nullptr), m_Arr_items{ nullptr }, m_NumOf_items(0), m_indent(_menu.m_indent) {				
+		*this = _menu;																														
+	}																																		
+
+	Menu& Menu::operator=(const Menu& _menu) {						 
+		if (this != &_menu) {										 
+			clear();										         
+			if (!_menu.isEmpty()) {                                  				  
+				*this = _menu.m_Menu_title;                          
+				for (int i = 0; i < _menu.m_NumOf_items; i++) {      
+					add(_menu.m_Arr_items[i]->m_item_Name);          
+				}                                                    
+				m_indent = _menu.m_indent;                           
+			}                                                        
+		}														     
+		return *this;											     			
+	}																 
+																
 	Menu& Menu::operator=(const char* _menu_Title) {			
 		if (_menu_Title != nullptr) {							
 			delete[] m_Menu_title;								
@@ -145,11 +128,10 @@ namespace sdds
 	
 	void Menu::clear() {								
 		for (int i = 0; i < m_NumOf_items; i++) {       
-	//////////////////////////////////////////////////////<--------------------------- my previous one was like delete[] m_Arr_items[i]->m_item_Name;
-			delete m_Arr_items[i];                      //                             But, I don't remember exactly since I changed this part so many times so that I fix the abort error.
-			m_Arr_items[i] = nullptr;                   //							   But, after following the instruction in the video, I no more tried to change this part.
-		}												//							   So, I can say I didn't know how and when the destructor of MenuItem is called accurately. 
-    //////////////////////////////////////////////////////                             
+			delete m_Arr_items[i];                      
+			m_Arr_items[i] = nullptr;                   
+		}												
+    
 		delete[] m_Menu_title;                          
 		m_Menu_title = nullptr;                         
 		m_NumOf_items = 0;                              

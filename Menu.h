@@ -1,10 +1,3 @@
-/**********************************************************
- * Name: Yonghwan Song
- * Student ID: 135458198
- * Seneca email: ysong115@myseneca.ca
- * Section: NDD
- * Completion Date: 8.8
-  **********************************************************/
 #ifndef SDDS_MENU_H
 #define SDDS_MENU_H
 #include <iostream>
@@ -18,10 +11,8 @@ namespace sdds
 		MenuItem();
 		MenuItem(const char*);
 		std::ostream& display(std::ostream& os = std::cout) const;
-		/////////////////////////////////////////////////////////<-----------------------I got the idea that I should write these together and delete means I don't have to define in implementation file
-		MenuItem(const MenuItem&) = delete;					   //<-----------------------So, I deleted the definition of copy&assignment operation in the implementation file.
-		MenuItem& operator=(const MenuItem& _item) = delete;   //                        I got this idea from professor Andrei Sajeniouk.
-		/////////////////////////////////////////////////////////						And the link is here https://www.youtube.com/watch?v=3VuuWGZQlDE&feature=youtu.be. 
+		MenuItem(const MenuItem&) = delete;					   
+		MenuItem& operator=(const MenuItem& _item) = delete;   
 		~MenuItem();
 	public:
 		friend class Menu;
@@ -38,7 +29,7 @@ namespace sdds
 	public:
 		Menu();
 		Menu(const char*, int _indent = 0);
-		Menu(const Menu&);//<-------------------------------This also I added after watching the video.
+		Menu(const Menu&);
 		Menu& operator=(const Menu&);
 		Menu& operator=(const char*);
 		~Menu();
